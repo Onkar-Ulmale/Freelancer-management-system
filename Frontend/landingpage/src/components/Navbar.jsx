@@ -18,8 +18,8 @@ function Navbar() {
         
         <li className='p-4 cursor-pointer' ><Link to="/Role" >Login</Link></li>
         <li className='p-4 cursor-pointer'><Link to="/Services">Services</Link></li>
-        <li className='p-4'>Resources</li>
-        <li className='p-4'>About</li>
+        <li className='p-4 cursor-pointer'><Link to="/ClientDashboard">clientDashboard</Link></li>
+        <li className='p-4 cursor-pointer'><Link to="/FreeLancerDashboard">freeLancerDashboard</Link></li>
         <li className='p-4'>Contact</li>
       </ul>
 
@@ -40,6 +40,11 @@ function Navbar() {
       </ul>
 
       </div>
+
+
+      <footer>
+        <a className=''>HIIIII</a>
+      </footer>
     </div>
     
   )
