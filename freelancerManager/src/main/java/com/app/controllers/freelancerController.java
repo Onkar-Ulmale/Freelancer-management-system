@@ -1,6 +1,7 @@
 package com.app.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ public class freelancerController {
 	private freelancerService freelancerService;
 	
 	@PostMapping("/addFreelancer")
+	@CrossOrigin(origins="http://localhost:3000")
 	public boolean AddFreelancer(@RequestBody freelancerAddDTO freelancerDTO)throws CustomException
 	{
 		freelancerService.AddFreelancer(freelancerDTO);

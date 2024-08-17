@@ -2,7 +2,7 @@ package com.app.dto;
 
 public class freelancerAddDTO {
 	private String name;
-	private int phonenumber;
+	private String phonenumber;
 	private String email;
 	private String password;
 	public String getName() {
@@ -11,10 +11,10 @@ public class freelancerAddDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getPhonenumber() {
+	public String getPhonenumber() {
 		return phonenumber;
 	}
-	public void setPhonenumber(int phonenumber) {
+	public void setPhonenumber(String phonenumber) {
 		this.phonenumber = phonenumber;
 	}
 	public String getEmail() {

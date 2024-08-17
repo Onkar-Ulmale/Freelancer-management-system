@@ -24,7 +24,7 @@ public class freelancer {
 	
 	
 	
-	private int phonenumber;
+	private String phonenumber;
 	private String email;
 	 
 	private String password;
@@ -41,7 +41,7 @@ public class freelancer {
 	@OneToMany(mappedBy = "freelancer2")
 	private List<working_project> wProjectList=new ArrayList<working_project>();
 
-	public freelancer(  String name,  int phonenumber,
+	public freelancer(  String name,  String phonenumber,
 			String email,   String password, List<reviews> reviewsList, List<Skills> skillList,
 			List<application> applicationList, List<working_project> wProjectList) {
 		super();
@@ -56,7 +56,7 @@ public class freelancer {
 		this.wProjectList = wProjectList;
 	}
 
-	public freelancer(  String name,  int phonenumber,
+	public freelancer(  String name,  String phonenumber,
 			String email,   String password) {
 		super();
 		
@@ -88,11 +88,11 @@ public class freelancer {
 		this.name = name;
 	}
 
-	public int getPhonenumber() {
+	public String getPhonenumber() {
 		return phonenumber;
 	}
 
-	public void setPhonenumber(int phonenumber) {
+	public void setPhonenumber(String phonenumber) {
 		this.phonenumber = phonenumber;
 	}
 
