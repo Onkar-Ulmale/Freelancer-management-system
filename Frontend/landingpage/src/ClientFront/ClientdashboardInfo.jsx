@@ -34,42 +34,54 @@ useEffect(()=>{
 ,[])
 
   return (
-    <div className='text-white px-96'>
+    <div  className=' px-[400px]'>
       <h1>PROJECTS</h1>
       
      
-      <table>
-        <thead>
-            <tr>
-                <th>BUDGET</th>
-                <th>DETAILS</th>
-                <th>PROJECT NAME</th>
-            </tr>
-            <tbody>
-            {project.length > 0 ? (
+   
+            {/* {project.length > 0 ? (
             project.map(project => (
               <tr className='text-white' key={project.id}>
                 <td>{project.budget}</td>
                 <td>{project.details}</td>
                 <td>{project.name}</td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="3">No projects found</td>
-            </tr>
-          )}
+              </tr> */}
+       
            
             
                   
-                 
+    
+    <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-20 mx-10 ">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+                <tr >
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Project Name</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Budget</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Details</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+            {project.length>0?(
+                project.map(project=>(
+                <tr class="hover:bg-gray-100 transition duration-300 ease-in-out" key={project.id}>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{project.name}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{project.budget}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{project.details}</td>
+                </tr>
+                   ))
+                  ):(
+                    <tr>
+                    <td colSpan="3">No projects found</td>
+                  </tr>
+                  )}
+               
                 
-
             </tbody>
-        </thead>
-      </table>
+        </table>
+    </div>
      
     </div>
+
   )
 }
 

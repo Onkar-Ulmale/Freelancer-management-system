@@ -6,9 +6,9 @@ import ClientdashboardInfo from './ClientdashboardInfo'
 function ClientDashboard() {
   return (
     <div className='w-full'>
-       {/* <ClientNavbar/>
+       <ClientNavbar/>
        
-        <Navbar/> */}
+        <Navbar/>
         <ClientdashboardInfo/>
        
        
