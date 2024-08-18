@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 //@Table(name = "users")
 @Entity
@@ -29,13 +30,22 @@ public  class client {
 	
 	private String password;
 	
+//	@JsonIgnore
+//	@OneToMany(fetch = FetchType.EAGER ,mappedBy = "client")
 	@OneToMany(mappedBy = "client")
 	private List<project> projectList=new ArrayList<project>();
 	
+//	@JsonIgnore
+//	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
 	@OneToMany(mappedBy = "client")
 	private List<working_project> wProjectList=new ArrayList<working_project>();
 
 	
+	public client() {
+		
+	}
+
+
 	public client(  String name,  String phonenumber,
 			 String email,  String password) {
 		super();

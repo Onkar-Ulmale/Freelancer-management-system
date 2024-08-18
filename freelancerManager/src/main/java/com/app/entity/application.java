@@ -23,6 +23,7 @@ public class application {
 	private Long application_Id;
 	
 	private Date date;
+	
 	@Enumerated(EnumType.STRING)
 	private appstatus status;
 	

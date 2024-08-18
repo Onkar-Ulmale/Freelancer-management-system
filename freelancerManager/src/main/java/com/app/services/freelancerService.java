@@ -11,7 +11,7 @@ public interface freelancerService {
 	public boolean AddFreelancer(freelancerAddDTO freelancerDTO)throws CustomException;
 	public List<freelancer> getAllFreelancers()throws CustomException;
 	public boolean UpdateFreelancer(freelancer freelancer)throws CustomException;
-	public freelancer findByEmailId(String email);
+	public freelancerAddDTO findByEmailId(String email);
 	
 
 

@@ -41,6 +41,8 @@ public class freelancer {
 	@OneToMany(mappedBy = "freelancer2")
 	private List<working_project> wProjectList=new ArrayList<working_project>();
 
+	
+
 	public freelancer(  String name,  String phonenumber,
 			String email,   String password, List<reviews> reviewsList, List<Skills> skillList,
 			List<application> applicationList, List<working_project> wProjectList) {

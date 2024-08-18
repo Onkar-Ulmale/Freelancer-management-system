@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.CustomException.CustomException;
+import com.app.dto.applicationGetDTO;
 import com.app.dto.applicationUpdateDTO;
-import com.app.entity.application;
 import com.app.services.applicationService;
 
 @RestController
@@ -38,7 +38,7 @@ public class applicationController {
 	}
 
 	@GetMapping("/getApplication/{id}")
-	public List<application> getAllApplicationByPRojectId(@PathVariable Long id) throws Exception
+	public List<applicationGetDTO> getAllApplicationByPRojectId(@PathVariable Long id) throws Exception
 	{
 			return applicationservice.getAllApplicationByProjectId(id);
 	}

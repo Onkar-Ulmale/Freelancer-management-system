@@ -2,16 +2,16 @@ package com.app.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.CustomException.CustomException;
 import com.app.dto.projectAddDTO;
+import com.app.dto.projectGetDTO;
 import com.app.entity.client;
 import com.app.entity.project;
 import com.app.repository.clientRepo;
@@ -75,9 +75,12 @@ public class projectServiceIMPL implements projectService{
 	}
 
 	@Override
-	public List<project> getAllProjectsByClientId(Long ClientId) throws CustomException {
+	public List<projectGetDTO> getAllProjectsByClientId(Long ClientId) throws CustomException {
 		try {
-			return projectRepository.findProjectsByClientId(ClientId);
+			List<projectGetDTO> newDTOList=projectRepository.findProjectsByClientId(ClientId).stream()
+					.map( project -> new projectGetDTO(project.getName(),project.getDetails(), project.getBudget()))
+					.collect(Collectors.toList());
+			return newDTOList;
 			
 		} catch (Exception e) {
 			throw new CustomException("Failed to get projects");

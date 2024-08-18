@@ -5,6 +5,18 @@ public class freelancerAddDTO {
 	private String phonenumber;
 	private String email;
 	private String password;
+	
+	
+	public freelancerAddDTO() {
+		
+	}
+	public freelancerAddDTO(String name, String phonenumber, String email, String password) {
+		super();
+		this.name = name;
+		this.phonenumber = phonenumber;
+		this.email = email;
+		this.password = password;
+	}
 	public String getName() {
 		return name;
 	}

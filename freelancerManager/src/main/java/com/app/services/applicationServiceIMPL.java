@@ -3,6 +3,7 @@ package com.app.services;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.CustomException.CustomException;
 import com.app.Enum.appstatus;
+import com.app.dto.applicationGetDTO;
 import com.app.entity.application;
 import com.app.entity.freelancer;
 import com.app.entity.project;
@@ -39,11 +41,19 @@ public class applicationServiceIMPL implements applicationService {
 		return true;
 		
 	}
+//	List<projectGetDTO> newDTOList=projectRepository.findProjectsByClientId(ClientId).stream()
+//			.map( project -> new projectGetDTO(project.getName(),project.getDetails(), project.getBudget()))
+//			.collect(Collectors.toList());
 
 	@Override
-	public List<application> getAllApplicationByProjectId(Long projectId) throws Exception {
+	public List<applicationGetDTO> getAllApplicationByProjectId(Long projectId) throws Exception {
 		try {
-			return applicationRepository.findApplicationsByProjectId(projectId);
+			 List<applicationGetDTO> newDTO=applicationRepository.findApplicationsByProjectId(projectId).stream()
+					.map(application -> new applicationGetDTO(application.getDate(),application.getFreelancer1().getFreelancer_Id()))
+					.collect(Collectors.toList());
+			
+			
+			return newDTO;
 		} catch (Exception e) {
 			throw new Exception(e);
 		}

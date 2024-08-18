@@ -11,6 +11,8 @@ public interface clientService {
 	public boolean AddClient(clientAddDTO clientDTO) throws CustomException, Exception;
 	public List<client> getAllclient() throws CustomException;
 	public boolean UpdateClient(client client) throws CustomException;
-	public client findByEmail(String email);
+	public clientAddDTO findByEmail(String email);
+	
+	
 
 }

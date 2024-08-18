@@ -38,6 +38,21 @@ import ApiService from '../ApiService'
         });
     }
 
+    const Login=async()=>{
+        await axios.post('http://localhost:8080/login/freelancer',{
+            email,password
+        }).then((res)=>{
+            alert("i am here")
+            if(res.data.email===email&&res.data.password===password){
+                alert(res.data.email)
+                alert(res.data.password)
+                window.location.href = "/FreelancerDashboard";
+            }else{
+                alert("invalid email or password")
+            }
+        });
+    }
+
  
     
 
@@ -89,12 +104,12 @@ import ApiService from '../ApiService'
                 <form className="flex flex-col items-center " action=''>
 
                         <div className='w-full relative'>
-                            <input className="border border-gray-500 rounded-full py-2 px-4 my-2 bg-transparent w-full "type='email' placeholder='email'/>
+                            <input className="border border-gray-500 rounded-full py-2 px-4 my-2 bg-transparent w-full "type='email' placeholder='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
                             <CiMail className='absolute top-[35%] right-3'/>
                         </div>
 
                         <div className='w-full relative'>
-                            <input className="border border-gray-500 rounded-full py-2 px-4 my-2 bg-transparent w-full "type='password' placeholder='password'/>
+                            <input className="border border-gray-500 rounded-full py-2 px-4 my-2 bg-transparent w-full "type='password' placeholder='password'  value={password} onChange={(e)=>setPassword(e.target.value)}/>
                             <CiLock className='absolute top-[35%] right-3'/>
                         </div>
                         <div className=' flex gap-7 w-full'>
@@ -106,7 +121,7 @@ import ApiService from '../ApiService'
                         </div>
 
 
-                        <button className='my-2 py-2 w-full rounded-full bg-[#00df9a]'>Login</button>
+                        <button className='my-2 py-2 w-full rounded-full bg-[#00df9a]'onClick={Login}>Login</button>
                         <span>Don't have an account ? <span className='cursor-pointer hover:underline' onClick={handleClick}>Register</span></span>
 
 

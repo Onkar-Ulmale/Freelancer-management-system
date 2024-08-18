@@ -3,6 +3,7 @@ package com.app.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.CustomException.CustomException;
 import com.app.dto.projectAddDTO;
+import com.app.dto.projectGetDTO;
 import com.app.entity.project;
 import com.app.services.projectService;
 
@@ -29,6 +31,7 @@ public class projectController {
 		return true;
 	}
 	
+	@CrossOrigin(origins="http://localhost:3000")
 	@GetMapping("/getAllProjects")
 	public List<project> getAllProjects() throws CustomException
 	{
@@ -36,7 +39,7 @@ public class projectController {
 	}
 	
 	@PostMapping("/getProjectsById/{Id}")
-	public List<project> getAllProjectById(@PathVariable Long Id) throws CustomException
+	public List<projectGetDTO> getAllProjectById(@PathVariable Long Id) throws CustomException
 	{
 		return projectService.getAllProjectsByClientId(Id);
 	}

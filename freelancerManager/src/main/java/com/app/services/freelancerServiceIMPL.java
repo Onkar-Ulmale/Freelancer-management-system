@@ -25,8 +25,6 @@ public class freelancerServiceIMPL implements freelancerService{
 	@Override
 	public boolean AddFreelancer(freelancerAddDTO freelancerDTO) throws CustomException {
 		try {
-			// @NotBlank String name, @NotNull int phonenumber,
-			//String email, @NotBlank @NotNull String password
 			
 			freelancer newFreelancer=new freelancer(freelancerDTO.getName(),freelancerDTO.getPhonenumber(),freelancerDTO.getEmail(),freelancerDTO.getPassword());
 			freelancerRepository.save(newFreelancer);
@@ -64,10 +62,13 @@ public class freelancerServiceIMPL implements freelancerService{
 		return false;
 	}
 	
-	public freelancer findByEmailId(String email) {
+	public freelancerAddDTO findByEmailId(String email) {
+		//String name, String phonenumber, String email, String password
 		Optional<freelancer> enteredFreelancer=freelancerRepository.findByEmail(email);
 		freelancer newFreelancer=enteredFreelancer.get();
-		return newFreelancer;
+		freelancerAddDTO newFreelancerDTO=new freelancerAddDTO(newFreelancer.getName(),newFreelancer.getPhonenumber(),newFreelancer.getEmail(),newFreelancer.getPassword());
+		
+		return newFreelancerDTO;
 		}
 
 }

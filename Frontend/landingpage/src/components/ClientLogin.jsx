@@ -3,7 +3,7 @@ import {useState} from 'react'
 import {CiUser,CiMail,CiLock} from "react-icons/ci"
 import Navbar from './Navbar'
 import image from '../assets/Premium Vector _ Software development, programming language, coding.jpeg' 
-import { redirect } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import ApiService from '../ApiService'
 import axios from 'axios'
 
@@ -12,23 +12,33 @@ import axios from 'axios'
    
 
     const handleLogin=()=>{
-        ApiService.login(username,password)
+        ApiService.login(name,password)
         .then(response=>{
             console.log("login successfull",response.data)
         })
     }
     const[email,setEmail]=useState('')
-    const[username,setUsername]=useState('')
+    const[name,setName]=useState('')
     const[password,setPassword]=useState('')
-    const[phone,setPhone]=useState('')
+    const[phonenumber,setPhonenumber]=useState('')
 
     const handleRegestration=async()=>{
         await axios.post('http://localhost:8080/client/addClient',{
-            username,phone,email,password
+            email,name,phonenumber,password
         });
     }
-
-    
+     
+    const Login=async()=>{
+        await axios.post('http://localhost:8080/login/client',{
+            email,password
+        }).then((res)=>{
+            if(res.data.email===email&&res.data.password===password){
+                window.location.href = "/ClientDashboard";
+            }else{
+                alert("invalid email or password")
+            }
+        });
+    }
 
 
 
@@ -63,7 +73,7 @@ import axios from 'axios'
                 <form className="flex flex-col items-center " action=''>
                    
                     <div className='w-full  relative'>
-                        <input className="border border-gray-500 rounded-full py-2 px-4 my-2 bg-transparent w-full hover:opacity-10"required value={username} onChange={(e)=>setUsername(e.target.value)} type='text' placeholder='name'/>
+                        <input className="border border-gray-500 rounded-full py-2 px-4 my-2 bg-transparent w-full hover:opacity-10"required value={name} onChange={(e)=>setName(e.target.value)} type='text' placeholder='name'/>
                         <CiUser className='absolute top-[35%] right-3'/>
                     </div>
 
@@ -77,7 +87,7 @@ import axios from 'axios'
                         <CiLock className='absolute top-[35%] right-3'/>
                     </div>
                     <div className='w-full relative'>
-                        <input className="border border-gray-500 rounded-full py-2 px-4 my-2 bg-transparent w-full "type='text' value={phone} onChange={(e)=>setPhone(e.target.value)}  placeholder='Phone'/>
+                        <input className="border border-gray-500 rounded-full py-2 px-4 my-2 bg-transparent w-full "type='text' value={phonenumber} onChange={(e)=>setPhonenumber(e.target.value)}  placeholder='Phone'/>
                         <CiLock className='absolute top-[35%] right-3'/>
                     </div>
 
@@ -96,12 +106,12 @@ import axios from 'axios'
                 <form className="flex flex-col items-center " action=''>
 
                         <div className='w-full relative'>
-                            <input className="border border-gray-500 rounded-full py-2 px-4 my-2 bg-transparent w-full "type='email' placeholder='email'/>
+                            <input className="border border-gray-500 rounded-full py-2 px-4 my-2 bg-transparent w-full "type='email' placeholder='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
                             <CiMail className='absolute top-[35%] right-3'/>
                         </div>
 
                         <div className='w-full relative'>
-                            <input className="border border-gray-500 rounded-full py-2 px-4 my-2 bg-transparent w-full "type='password' placeholder='password'/>
+                            <input className="border border-gray-500 rounded-full py-2 px-4 my-2 bg-transparent w-full " value={password} onChange={(e)=>setPassword(e.target.value)} type='password' placeholder='password'/>
                             <CiLock className='absolute top-[35%] right-3'/>
                         </div>
                         <div className=' flex gap-7 w-full'>
@@ -113,7 +123,7 @@ import axios from 'axios'
                         </div>
 
 
-                        <button className='my-2 py-2 w-full rounded-full bg-[#00df9a]'>Login</button>
+                        <button className='my-2 py-2 w-full rounded-full bg-[#00df9a] 'onClick={Login}>Login</button>
                         <span>Don't have an account ? <span className='cursor-pointer hover:underline' onClick={handleClick} >Register</span></span>
 
 

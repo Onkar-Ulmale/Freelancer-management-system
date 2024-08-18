@@ -67,10 +67,12 @@ public class clientServiceIMPL implements clientService{
 			throw new CustomException("Failed to update the client ");
 		}
 	}
-	public client findByEmail(String email)
+	public clientAddDTO findByEmail(String email)
 	{
+		//String name, String phonenumber, String email, String password
 		Optional<client> enteredClient=clientRepository.findByEmail(email);
 		client newClient=enteredClient.get();
-		return newClient;
+		clientAddDTO newclientDTO=new clientAddDTO(newClient.getName(),newClient.getPhonenumber(),newClient.getEmail(),newClient.getPassword());
+		return newclientDTO;
 	}
 }

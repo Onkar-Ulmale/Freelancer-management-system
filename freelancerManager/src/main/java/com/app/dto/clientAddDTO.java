@@ -6,7 +6,9 @@ public class clientAddDTO {
 	private String email;
 	private String password;
 	
-	
+	public clientAddDTO() {
+		
+	}
 	public clientAddDTO(String name, String phonenumber, String email, String password) {
 		this.name = name;
 		this.phonenumber = phonenumber;

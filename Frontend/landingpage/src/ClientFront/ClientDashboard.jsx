@@ -1,6 +1,7 @@
 import React from 'react'
 import ClientNavbar from './ClientNavbar'
 import Navbar from './Navbar'
+import ClientdashboardInfo from './ClientdashboardInfo'
 
 function ClientDashboard() {
   return (
@@ -8,6 +9,7 @@ function ClientDashboard() {
        <ClientNavbar/>
        
         <Navbar/>
+        <ClientdashboardInfo/>
        
        
     </div>

@@ -2,12 +2,14 @@ package com.app.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.CustomException.CustomException;
+import com.app.dto.clientAddDTO;
 import com.app.dto.freelancerAddDTO;
 import com.app.services.freelancerService;
 
@@ -26,4 +28,11 @@ public class freelancerController {
 		return true;
 	}
 
+	
+	
+	@PostMapping("/FindByEmail")
+	public freelancerAddDTO getFreelancerByEmail(@RequestBody String email)
+	{
+		return freelancerService.findByEmailId(email);
+	}
 }
