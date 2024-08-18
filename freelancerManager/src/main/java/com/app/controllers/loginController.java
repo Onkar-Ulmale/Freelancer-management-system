@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.LoginRequestDTO;
-import com.app.dto.clientAddDTO;
+import com.app.dto.clientGetDTO;
 import com.app.dto.freelancerAddDTO;
 import com.app.services.loginService;
 
@@ -33,7 +33,7 @@ public class loginController {
 
 	   @PostMapping("/client")
 	   @CrossOrigin(origins="http://localhost:3000")
-	   public clientAddDTO loginClient(@RequestBody LoginRequestDTO loginRequest) {
+	   public clientGetDTO loginClient(@RequestBody LoginRequestDTO loginRequest) {
 	        return loginService.clientLogin(loginRequest.getEmail(), loginRequest.getPassword());
 	    }
 	    

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.dto.clientAddDTO;
+import com.app.dto.clientGetDTO;
 import com.app.dto.freelancerAddDTO;
 import com.app.entity.client;
 import com.app.entity.freelancer;
@@ -29,13 +30,13 @@ public class loginServiceIMPL implements loginService {
 		this.freelancerRepository = freelancerRepository;
 	}
 
-	public clientAddDTO clientLogin(String email,String password)
+	public clientGetDTO clientLogin(String email,String password)
 	{
 		Optional<client> enteredClient=clientRepository.findByEmail(email);
 			client newClient=new client();
 					newClient=enteredClient.get();	
 			if(newClient.getPassword().equals(password)) {
-				clientAddDTO newClientDTO=new clientAddDTO(newClient.getName(),newClient.getPhonenumber(),newClient.getEmail(),newClient.getPassword());
+				clientGetDTO newClientDTO=new clientGetDTO(newClient.getClient_Id(),newClient.getName(),newClient.getPhonenumber(),newClient.getEmail(),newClient.getPassword());
 				return newClientDTO;
 			}	
 		return null;

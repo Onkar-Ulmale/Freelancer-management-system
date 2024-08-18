@@ -5,27 +5,39 @@ import axios from 'axios';
 
 function ClientdashboardInfo() {
 
+
 const [project,setProject]=useState([]);
 
 
+
+
 useEffect(()=>{
-   try{
-    
-    axios.post("http://localhost:8080/project/getProjectsById/1")
-    .then((res)=>{
-        alert(res.data.budget)
-        setProject(res.data.name);
+  const UserId=localStorage.getItem('userId')
+   
+  
+  // alert(getUserId)
+
+  
+    axios.post(`http://localhost:8080/project/getProjectsById/${UserId}`)
+    .then(response=>{
+      
+      setProject(response.data)
+      
     })
-   }catch{
-    alert("problemm!!!!!!!!!")
-       
-    
-   }
-},[])
+    .catch(err=>{
+      console.log(err)
+    })
+  }
+
+ 
+
+,[])
 
   return (
-    <div className='text-white'>
+    <div className='text-white px-96'>
       <h1>PROJECTS</h1>
+      
+     
       <table>
         <thead>
             <tr>
@@ -34,18 +46,29 @@ useEffect(()=>{
                 <th>PROJECT NAME</th>
             </tr>
             <tbody>
-                {project.map(emp=>{
-                    <tr key={project.project_id}>
-                        <td>{project.budget}</td>
-                        <td>{project.details}</td>
-                        <td>{project.name}</td>
-
-                    </tr>
-                })}
+            {project.length > 0 ? (
+            project.map(project => (
+              <tr className='text-white' key={project.id}>
+                <td>{project.budget}</td>
+                <td>{project.details}</td>
+                <td>{project.name}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="3">No projects found</td>
+            </tr>
+          )}
+           
+            
+                  
+                 
+                
 
             </tbody>
         </thead>
       </table>
+     
     </div>
   )
 }

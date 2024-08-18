@@ -22,6 +22,7 @@ import axios from 'axios'
     const[password,setPassword]=useState('')
     const[phonenumber,setPhonenumber]=useState('')
 
+
     const handleRegestration=async()=>{
         await axios.post('http://localhost:8080/client/addClient',{
             email,name,phonenumber,password
@@ -32,6 +33,11 @@ import axios from 'axios'
         await axios.post('http://localhost:8080/login/client',{
             email,password
         }).then((res)=>{
+
+            
+            localStorage.setItem('userId',res.data.id)
+            
+
             if(res.data.email===email&&res.data.password===password){
                 window.location.href = "/ClientDashboard";
             }else{
@@ -39,6 +45,12 @@ import axios from 'axios'
             }
         });
     }
+
+    const[clientData,setClientData]=useState(null)
+
+    // // useEffect(()=>{
+
+    // })
 
 
 
@@ -56,6 +68,7 @@ import axios from 'axios'
 
         
     }
+    
 
   return (
     
