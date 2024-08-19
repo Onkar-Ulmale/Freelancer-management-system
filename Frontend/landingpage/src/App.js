@@ -8,6 +8,13 @@ import ClientLogin from "./components/ClientLogin";
 import ClientNavbar from "./ClientFront/ClientNavbar";
 import ClientDashboard from "./ClientFront/ClientDashboard";
 import FreelancerDashboard from "./FreelancerFront/FreelancerDashboard";
+import ClientProjects from "./ClientFront/Projects";
+import ClientProfile from "./ClientFront/ClientProfile";
+import FreelancerProfile from "./FreelancerFront/FreelancerProfile";
+import Projects from "./FreelancerFront/Projects";
+import ClientHome from "./ClientFront/ClientHome";
+
+
 
 function App() {
 
@@ -25,6 +32,11 @@ function App() {
             <Route path="/Services" element={<Services/>}/> 
             <Route path="/ClientDashboard" element={<ClientDashboard/>}/> 
             <Route path="/FreeLancerDashboard" element={<FreelancerDashboard/>}/> 
+            <Route path="/ClientProjects" element={<ClientProjects/>}/> 
+            <Route path="/ClientProfile" element={<ClientProfile/>}/> 
+            <Route path="/FreelancerProfile" element={<FreelancerProfile/>}/> 
+            <Route path="/FreelancerProjects" element={<Projects/>}/> 
+            <Route path="/ClientHome" element={<ClientHome/>}/>
           </Routes>
       </BrowserRouter>
      

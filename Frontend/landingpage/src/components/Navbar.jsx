@@ -3,6 +3,7 @@ import{AiOutlineClose,AiOutlineMenu}  from 'react-icons/ai'
 
 import { BrowserRouter ,Link } from 'react-router-dom'
 
+
 function Navbar() {
 
     const [nav,setNav]=useState(true)
@@ -11,15 +12,13 @@ function Navbar() {
         setNav(!nav)
     }
   return (
-   
+   <div>
     <div className='flex text-white justify-between items-center h-24 max-w-[1240px] mx-auto px-4'>
       <h1 className='w-full text-3xl font-bold text-[#00df9a]'>GIG</h1>
       <ul className='hidden md:flex'>
         
         <li className='p-4 cursor-pointer' ><Link to="/Role" >Login</Link></li>
         <li className='p-4 cursor-pointer'><Link to="/Services">Services</Link></li>
-        <li className='p-4 cursor-pointer'><Link to="/ClientDashboard">clientDashboard</Link></li>
-        <li className='p-4 cursor-pointer'><Link to="/FreeLancerDashboard">freeLancerDashboard</Link></li>
         <li className='p-4'>Contact</li>
       </ul>
 
@@ -42,9 +41,9 @@ function Navbar() {
       </div>
 
 
-      <footer>
-        <a className=''>HIIIII</a>
-      </footer>
+      </div>
+
+
     </div>
     
   )

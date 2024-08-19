@@ -43,6 +43,15 @@ public class freelancer {
 
 	
 
+	public freelancer(Long freelancer_Id, String name, String phonenumber, String email, String password) {
+		super();
+		this.freelancer_Id = freelancer_Id;
+		this.name = name;
+		this.phonenumber = phonenumber;
+		this.email = email;
+		this.password = password;
+	}
+
 	public freelancer(  String name,  String phonenumber,
 			String email,   String password, List<reviews> reviewsList, List<Skills> skillList,
 			List<application> applicationList, List<working_project> wProjectList) {

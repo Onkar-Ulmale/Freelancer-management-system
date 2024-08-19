@@ -31,6 +31,7 @@ public class freelancerController {
 	
 	
 	@PostMapping("/FindByEmail")
+	@CrossOrigin(origins="http://localhost:3000")
 	public freelancerAddDTO getFreelancerByEmail(@RequestBody String email)
 	{
 		return freelancerService.findByEmailId(email);

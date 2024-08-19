@@ -26,7 +26,7 @@ public class freelancerServiceIMPL implements freelancerService{
 	public boolean AddFreelancer(freelancerAddDTO freelancerDTO) throws CustomException {
 		try {
 			
-			freelancer newFreelancer=new freelancer(freelancerDTO.getName(),freelancerDTO.getPhonenumber(),freelancerDTO.getEmail(),freelancerDTO.getPassword());
+			freelancer newFreelancer=new freelancer(freelancerDTO.getId(),freelancerDTO.getName(),freelancerDTO.getPhonenumber(),freelancerDTO.getEmail(),freelancerDTO.getPassword());
 			freelancerRepository.save(newFreelancer);
 			return true;
 		} catch (Exception e) {

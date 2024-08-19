@@ -37,6 +37,7 @@ import axios from 'axios'
             
             localStorage.setItem('userId',res.data.id)
             
+            localStorage.setItem('email',res.data.email)
 
             if(res.data.email===email&&res.data.password===password){
                 window.location.href = "/ClientDashboard";

@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FaRegArrowAltCircleLeft } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
+import AddProject from './AddProject';
 
 //budget details name client_id
 
-function ClientdashboardInfo() {
+function ClientProjects() {
+const navigate=useNavigate()
+
 
 
 const [project,setProject]=useState([]);
@@ -33,9 +38,18 @@ useEffect(()=>{
 
 ,[])
 
+const returnTo=()=>{
+
+  navigate("/ClientDashboard")
+}
+
   return (
-    <div  className=' px-[400px]'>
-      <h1>PROJECTS</h1>
+    <div>
+      <div className='text-9xl text-orange-500 flex justify-center mx-10 mt-4 h-5 w-10 cursor-pointer'  onClick={returnTo} >
+      <FaRegArrowAltCircleLeft  />
+      </div>
+    <div  className=' text-white px-[400px]'>
+      <h1 className='mt-20 px-20 text-3xl font-bold'>PROJECTS</h1>
       
      
    
@@ -82,7 +96,10 @@ useEffect(()=>{
      
     </div>
 
+    <AddProject/>
+    </div>
+
   )
 }
 
-export default ClientdashboardInfo
+export default ClientProjects

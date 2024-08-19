@@ -1,16 +1,21 @@
 import React from 'react'
 import ClientNavbar from './ClientNavbar'
 import Navbar from './Navbar'
-import ClientdashboardInfo from './ClientdashboardInfo'
+import ClientHome from './ClientHome'
+
 
 function ClientDashboard() {
   return (
-    <div className='w-full'>
+    <div >
+      
+
+      <div className='w-full'>
        <ClientNavbar/>
        
         <Navbar/>
-        <ClientdashboardInfo/>
-       
+        
+        </div>
+        <ClientHome/>
        
     </div>
   )

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.CustomException.CustomException;
 import com.app.dto.projectAddDTO;
+import com.app.dto.projectGetAllDTO;
 import com.app.dto.projectGetDTO;
 import com.app.entity.client;
 import com.app.entity.project;
@@ -45,9 +46,12 @@ public class projectServiceIMPL implements projectService{
 	}
 
 	@Override
-	public List<project> getAllProjects() throws CustomException {
+	public List<projectGetAllDTO> getAllProjects() throws CustomException {
 		try {
-			return projectRepository.findAll();
+			List<projectGetAllDTO> newDTOList=projectRepository.findAll().stream()
+					.map(project->new projectGetAllDTO(project.getProject_Id(),project.getName(),project.getDetails(),project.getBudget()))
+					.collect(Collectors.toList());
+			return newDTOList;
 			
 		} catch (Exception e) {
 			throw new CustomException("Failed to get the projects");

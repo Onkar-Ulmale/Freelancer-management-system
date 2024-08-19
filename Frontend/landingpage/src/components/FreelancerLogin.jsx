@@ -3,10 +3,13 @@ import React from 'react'
 import {useState} from 'react'
 import {CiUser,CiMail,CiLock} from "react-icons/ci"
 import ApiService from '../ApiService'
+import { useNavigate } from 'react-router-dom'
 
 
 
  function FreelancerLogin() {
+const navigate=useNavigate()
+
     const[open,setOpen]=useState(false)
 
     const[isRegister,setIsRegister]=useState(false)
@@ -31,6 +34,7 @@ import ApiService from '../ApiService'
     const[name,setName]=useState('')
     const[password,setPassword]=useState('')
     const[phonenumber,setPhonenumber]=useState('')
+    const[id,setId]=useState('')
 
     const handleRegestration=async()=>{
         await axios.post('http://localhost:8080/freelancer/addFreelancer',{
@@ -40,13 +44,19 @@ import ApiService from '../ApiService'
 
     const Login=async()=>{
         await axios.post('http://localhost:8080/login/freelancer',{
-            email,password
+            email,password,id
         }).then((res)=>{
-            alert("i am here")
+
+
+            localStorage.setItem('email',email)
+
+            
             if(res.data.email===email&&res.data.password===password){
-                alert(res.data.email)
-                alert(res.data.password)
-                window.location.href = "/FreelancerDashboard";
+               
+                window.location.href = "/FreeLancerDashboard";
+                
+            }else if(res.data.email!=email&&res.data.password!=password){
+                alert("no match found")
             }else{
                 alert("invalid email or password")
             }

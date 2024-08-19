@@ -48,7 +48,7 @@ public class loginServiceIMPL implements loginService {
 			 if(newFreelancer.getPassword().equals(password))
 			 {
 				 //String name, String phonenumber, String email, String password
-				 freelancerAddDTO newFreelancerDTO = new freelancerAddDTO(newFreelancer.getName(),newFreelancer.getPhonenumber(),newFreelancer.getEmail(),newFreelancer.getPassword());
+				 freelancerAddDTO newFreelancerDTO = new freelancerAddDTO(newFreelancer.getFreelancer_Id(),newFreelancer.getName(),newFreelancer.getPhonenumber(),newFreelancer.getEmail(),newFreelancer.getPassword());
 				 return newFreelancerDTO;
 			 }
 		 
